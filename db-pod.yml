@@ -1,0 +1,14 @@
+apiVersion: "v1"
+kind: Pod
+metadata:
+  name: redis
+  labels:
+    name: redis11
+    app: demo22
+spec:
+  containers:
+    - name: redis88
+      image: redis:latest
+      ports:
+        - containerPort: 6379         
+          protocol: TCP

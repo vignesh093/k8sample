@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+#Unique name for the service
+  labels:
+    name: web
+    app: demo
+#Used only for logical grouping. Could be any K/V.
+spec:
+  selector:
+    name: web 
+#All the K/V in selector should match labels K/V pairs then this service will be applied to that port
+  type: NodePort
+#Nodeport means this port will be open to the outside world. It could pick any port above 30000
+#To get that port number use "kubectl get svc -o wide"
+  ports:
+   - port: 80
+     targetPort: 5000
+     protocol: TCP

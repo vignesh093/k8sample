@@ -1,0 +1,22 @@
+apiVersion: "v1"
+kind: Pod
+metadata:
+  name: web
+#name of the pod
+  labels:
+#A K/V pair. Used to couple the pod and service. A service can identify its pod only with the help of labels
+#If the "spec.selectors.key: value" matches with pod's "labels.key: value" then that service will be applied to that pod
+#Even if the labels in pod has multiple K,V atleast the K/V in selectors should match labels.
+    name: web
+    app: demo
+spec:
+  containers:
+    - name: web
+#Unique name for the container
+      image: ks/redis 
+      imagePullPolicy: Never
+#Usually the image mentioned above will be pulled from public docker hub. If we want to pull from local docker hub then we mention above.
+      ports:
+        - containerPort: 5000
+          name: http
+          protocol: TCP

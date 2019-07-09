@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+#In the app.py we are using redis DB and the variable which points is "redis12". That should match the metadata.name here
+  name: redis12
+  labels:
+    name: redis17
+    app: demo27
+spec:
+  ports:
+  - port: 6379
+    name: redis99
+    targetPort: 6379
+  selector:
+    name: redis11

@@ -1,0 +1,28 @@
+#A pod can be directly deployed using pod's yml.
+#The other way of deploying is to use replicaset with the mentioned replica number.
+#This ensures always there are mentioned replicas available.
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: web
+#Unique name for the replicaset
+  labels:
+    name: web
+    app: demo
+spec:
+  replicas: 2
+#Pod name would be chosen automaticaaly with prefix as replicaset name
+##Rest fields and rules are as same as that of pod
+  template:
+    metadata:
+      labels:
+        name: web
+    spec:
+      containers:
+        - name: web
+          image: ds/web
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
+              name: http
+              protocol: TCP

@@ -1,4 +1,6 @@
 
+A sample kuburnete application
+
 Build the docker image using below command:
 
 docker build -t %image name% .
